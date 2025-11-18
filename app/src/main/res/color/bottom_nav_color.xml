@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 선택된 아이템 -->
+    <item android:color="#8B5CF6" android:state_checked="true" />
+    <!-- 선택되지 않은 아이템 -->
+    <item android:color="#666666" />
+</selector>

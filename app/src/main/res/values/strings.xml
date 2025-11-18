@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">VitaDay</string>
+    <string name="logout_button">로그아웃 하기</string>
+</resources>

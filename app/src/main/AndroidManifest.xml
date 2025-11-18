@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.sswu.vitaday"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ✅ 인터넷 권한 (Firebase 로그인용) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- ✅ 네트워크 상태 확인 (Firebase/AuthUI 필요 시) -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- ✅ Room DB 파일 저장용 (필요 시) -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VitaDay">
+
+        <!-- ✅ 로그인 화면 -->
+        <activity
+            android:name="edu.sswu.vitaday.LoginActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <!-- ✅ 메인 화면 -->
+        <activity
+            android:name="edu.sswu.vitaday.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ✅ Firebase 관련 초기 설정 -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/purple_500" />
+
+    </application>
+
+</manifest>

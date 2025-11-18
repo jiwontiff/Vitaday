@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="edu.sswu.vitaday.HomeFragment"
+        android:label="홈"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_statistics"
+        android:name="edu.sswu.vitaday.StatisticsFragment"
+        android:label="통계"
+        tools:layout="@layout/fragment_statistics" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="edu.sswu.vitaday.SettingsFragment"
+        android:label="설정"
+        tools:layout="@layout/fragment_settings" />
+
+    <!-- 캘린더는 홈에서 접근 또는 별도 탭으로 설정 가능 -->
+    <fragment
+        android:id="@+id/navigation_calendar"
+        android:name="edu.sswu.vitaday.ui.calendar.CalendarFragment"
+        android:label="캘린더"
+        tools:layout="@layout/fragment_calendar" />
+
+</navigation>

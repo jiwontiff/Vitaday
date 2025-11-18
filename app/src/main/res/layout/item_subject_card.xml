@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="#1E1E1E"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 과목 헤더 (클릭 시 확장/축소) -->
+        <LinearLayout
+            android:id="@+id/ll_subject_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- 과목 색상 인디케이터 -->
+            <View
+                android:id="@+id/view_subject_color"
+                android:layout_width="4dp"
+                android:layout_height="40dp"
+                android:background="#8B5CF6" />
+
+            <!-- 과목 이름 -->
+            <TextView
+                android:id="@+id/tv_subject_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="수학"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp" />
+
+            <!-- 투두 개수 -->
+            <TextView
+                android:id="@+id/tv_todo_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:textColor="#8B5CF6"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp" />
+
+            <!-- 확장/축소 아이콘 -->
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:tint="#AAAAAA" />
+        </LinearLayout>
+
+        <!-- 확장되는 투두 컨테이너 -->
+        <LinearLayout
+            android:id="@+id/ll_todo_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:visibility="gone">
+
+            <!-- 투두 입력 영역 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <EditText
+                    android:id="@+id/et_todo_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="할 일 추가..."
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#666666"
+                    android:background="@drawable/bg_edit_text"
+                    android:padding="12dp"
+                    android:imeOptions="actionDone"
+                    android:inputType="text" />
+
+                <CheckBox
+                    android:id="@+id/cb_repeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반복"
+                    android:textColor="#AAAAAA"
+                    android:buttonTint="#8B5CF6"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- 투두 리스트 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_todos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
