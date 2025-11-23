@@ -72,10 +72,11 @@ class CalendarAdapter(
             // 오늘 날짜 표시
             val isToday = isSameDay(calendarDate.date, today)
             if (isToday) {
-                tvDay.setTextColor(Color.parseColor("#8B5CF6"))
+                tvDay.setTextColor(Color.parseColor("#FFFFFF"))  // ✅ 흰색으로 변경
                 tvDay.setBackgroundResource(R.drawable.bg_selected_day)
             } else {
                 tvDay.background = null
+                tvDay.setTextColor(Color.parseColor("#FFFFFF"))  // ✅ 일반 날짜도 흰색
             }
 
             // 선택된 날짜 표시

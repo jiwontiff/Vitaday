@@ -35,7 +35,7 @@ import java.util.Date
  */
 class CalendarFragment : Fragment() {
 
-    private val viewModel: CalendarViewModel by viewModels()
+    private val viewModel: CalendarViewModel by activityViewModels()
     private val sharedViewModel: SharedSubjectViewModel by activityViewModels()
 
     private lateinit var tvMonthYear: TextView
@@ -268,6 +268,7 @@ class CalendarFragment : Fragment() {
         return dates
     }
 
+    /*
     private fun updateSubjectList(date: Date) {
         llSubjectContainer.removeAllViews()
 
@@ -283,7 +284,33 @@ class CalendarFragment : Fragment() {
             llSubjectContainer.addView(subjectCard)
         }
     }
+    */
 
+    private fun updateSubjectList(date: Date) {
+        llSubjectContainer.removeAllViews()
+
+        val todosBySubject: Map<String, List<TodoItem>> = viewModel.getTodosBySubject(date)
+
+        android.util.Log.d("CalendarFragment", "📊 전체 과목 수: ${sharedViewModel.subjects.value.size}")
+
+        sharedViewModel.subjects.value.forEach { subject ->
+            try {
+                android.util.Log.d("CalendarFragment", "🔄 처리 중: ${subject.name} (색상: ${subject.colorHex})")
+
+                val subjectCard = createSubjectCard(
+                    subject,
+                    todosBySubject[subject.id.toString()] ?: emptyList()
+                )
+                llSubjectContainer.addView(subjectCard)
+
+                android.util.Log.d("CalendarFragment", "✅ ${subject.name} 생성 성공")
+
+            } catch (e: Exception) {
+                android.util.Log.e("CalendarFragment", "❌ ${subject.name} 생성 실패", e)
+                e.printStackTrace()
+            }
+        }
+    }
 
     private fun createSubjectCard(subject: SubjectData, todos: List<TodoItem>): View {
         val cardView = layoutInflater.inflate(R.layout.item_subject_card, llSubjectContainer, false)

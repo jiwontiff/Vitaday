@@ -89,7 +89,7 @@ class AddTodoBottomSheet : BottomSheetDialogFragment() {
                 val radioButton = RadioButton(requireContext()).apply {
                     id = View.generateViewId()
                     text = subject.name
-                    tag = subject.id
+                    tag = subject.id.toString()
                     setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white))
                 }
                 rgSubjects.addView(radioButton)
