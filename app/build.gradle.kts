@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.kapt") // Room용 kapt
-    id("com.google.gms.google-services") // Firebase용
+    id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -11,8 +11,8 @@ android {
 
     defaultConfig {
         applicationId = "edu.sswu.vitaday"
-        minSdk = 21
-        targetSdk = 36
+        minSdk = 24
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -28,63 +28,57 @@ android {
             )
         }
     }
-
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
-    // 기본 Android 라이브러리
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
-    // ---------- ✅ Room (DB) ----------
-    implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
-
-    // ---------- ✅ Firebase & Google Auth ----------
-    // Firebase BoM (버전 통합 관리)
-    implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
-
-    // Firebase Authentication & Analytics
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-auth-ktx")
-    //implementation("com.google.firebase:firebase-common-ktx")
-    implementation("com.google.firebase:firebase-analytics")
-
-    // Firebase UI for Auth
-    implementation("com.firebaseui:firebase-ui-auth:8.0.2")
-
-    // ✅ (중요) Google Sign-In / Smart Lock  -> 추가
-    implementation("com.google.android.gms:play-services-auth:20.7.0")
-
-    // Google 계정 연동용 Credential Manager
-    implementation("androidx.credentials:credentials:1.3.0")
-    //implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
-    //implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
-
-    // ---------- ✅ ViewModel + Coroutine ----------
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-
-    // ---------- ✅ Navigation Component ----------
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
-
-    // ---------- ✅ 테스트 ----------
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // ✅ Fragment KTX (by viewModels() 사용을 위해 필수!)
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.firebaseui:firebase-ui-auth:8.0.2")
+
+    // Room Database
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+    // Lifecycle & Coroutines
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Fragment & Navigation
+    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.4")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.4")
+
+    // ViewPager2 (통계 탭)
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    // MPAndroidChart (그래프)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    // RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // CardView
+    implementation("androidx.cardview:cardview:1.0.0")
 }

@@ -16,9 +16,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // MPAndroidChart를 위한 JitPack 저장소
+        maven { url = uri("https://jitpack.io") }
     }
 }
 
 rootProject.name = "VitaDay"
 include(":app")
- 
