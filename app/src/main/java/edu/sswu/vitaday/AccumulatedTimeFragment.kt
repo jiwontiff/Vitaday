@@ -12,7 +12,14 @@ import kotlinx.coroutines.launch
 
 class AccumulatedTimeFragment : Fragment() {
 
-    private val viewModel: StatisticsViewModel by activityViewModels()
+    private val viewModel: StatisticsViewModel by activityViewModels {
+        val database = UserDatabase.getDatabase(requireContext())
+        val repository = StatisticsRepository(
+            database.timerSessionDao(),
+            database.subjectDao()
+        )
+        StatisticsViewModelFactory(repository)
+    }
 
     private lateinit var tvToday: TextView
     private lateinit var tvThisWeek: TextView

@@ -11,7 +11,7 @@ import android.content.Context
         Subject::class,
         TimerSessionEntity::class
     ],
-    version = 3,
+    version = 4,  // ✅ Updated from 3 to 4
     exportSchema = false
 )
 abstract class UserDatabase : RoomDatabase() {

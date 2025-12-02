@@ -15,7 +15,15 @@ import kotlinx.coroutines.launch
 
 class StatisticsFragment : Fragment() {
 
-    private lateinit var viewModel: StatisticsViewModel
+    private val viewModel: StatisticsViewModel by viewModels {
+        val database = UserDatabase.getDatabase(requireContext())
+        val repository = StatisticsRepository(
+            database.timerSessionDao(),
+            database.subjectDao()
+        )
+        StatisticsViewModelFactory(repository)
+    }
+
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var tvTotalCount: TextView
@@ -32,22 +40,10 @@ class StatisticsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViewModel()
         initViews(view)
         setupViewPager()
         setupTabs()
         observeData()
-    }
-
-    private fun initViewModel() {
-        val database = UserDatabase.getDatabase(requireContext())
-        val repository = StatisticsRepository(
-            database.timerSessionDao(),
-            database.subjectDao()
-        )
-        val factory = StatisticsViewModelFactory(repository)
-        val viewModel: StatisticsViewModel by viewModels { factory }
-        this.viewModel = viewModel
     }
 
     private fun initViews(view: View) {
