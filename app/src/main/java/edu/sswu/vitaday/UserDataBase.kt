@@ -5,10 +5,20 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 
-@Database(entities = [User::class], version = 2)
+@Database(
+    entities = [
+        User::class,
+        Subject::class,
+        TimerSessionEntity::class
+    ],
+    version = 4,  // ✅ Updated from 3 to 4
+    exportSchema = false
+)
 abstract class UserDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
+    abstract fun subjectDao(): SubjectDao
+    abstract fun timerSessionDao(): TimerSessionDao
 
     companion object {
         @Volatile
@@ -19,7 +29,7 @@ abstract class UserDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     UserDatabase::class.java,
-                    "user_database"
+                    "vitaday_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

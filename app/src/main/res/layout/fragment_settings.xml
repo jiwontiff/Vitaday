@@ -32,25 +32,13 @@
         android:layout_marginTop="32dp" />
 
     <Button
-        android:id="@+id/btnEditProfile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="회원정보 수정"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#8B5CF6"
-        app:layout_constraintTop_toBottomOf="@id/tvAccountSection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <Button
         android:id="@+id/btnLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="로그아웃"
         android:textColor="#FFFFFF"
         android:backgroundTint="#666666"
-        app:layout_constraintTop_toBottomOf="@id/btnEditProfile"
+        app:layout_constraintTop_toBottomOf="@id/tvAccountSection"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp" />

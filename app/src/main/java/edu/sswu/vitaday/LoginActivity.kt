@@ -3,12 +3,12 @@ package edu.sswu.vitaday
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import edu.sswu.vitaday.R
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
                     lifecycleScope.launch(Dispatchers.IO) {
                         val dao = userDao
-                        val existingUser = dao.login(email, "firebase") // 임시 비밀번호
+                        val existingUser = dao.login(email, "firebase")
 
                         if (existingUser == null) {
                             dao.insertUser(
@@ -67,19 +67,22 @@ class LoginActivity : AppCompatActivity() {
         db = UserDatabase.getDatabase(this)
         userDao = db.userDao()
 
-        startSignInFlow()
+        // 버튼 클릭 리스너 추가
+        val btnGoogleLogin = findViewById<Button>(R.id.btn_google_login)
+        btnGoogleLogin.setOnClickListener {
+            startSignInFlow()
+        }
     }
 
     private fun startSignInFlow() {
         val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
             AuthUI.IdpConfig.GoogleBuilder().build()
         )
 
         val signInIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
-            .setIsSmartLockEnabled(false)   // ✅ 이 줄 추가 -> 추가
+            .setIsSmartLockEnabled(false)
             .build()
 
         signInLauncher.launch(signInIntent)
