@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:minHeight="80dp">
 
         <!-- 과목 색상 인디케이터 -->
         <View
@@ -33,6 +34,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/view_subject_color"
             app:layout_constraintEnd_toStartOf="@id/btn_delete_subject" />
@@ -45,45 +47,116 @@
             android:text="오늘: 0분"
             android:textColor="#AAAAAA"
             android:textSize="14sp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintTop_toBottomOf="@id/tv_subject_name"
             app:layout_constraintStart_toEndOf="@id/view_subject_color"
-            app:layout_constraintEnd_toStartOf="@id/btn_delete_subject" />
+            app:layout_constraintEnd_toStartOf="@id/btn_delete_subject"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- 타이머 시작 버튼 -->
-        <Button
-            android:id="@+id/btn_start_timer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="타이머 시작"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp"
-            android:backgroundTint="#8B5CF6"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="12dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_today_time"
-            app:layout_constraintStart_toEndOf="@id/view_subject_color"
-            app:layout_constraintEnd_toStartOf="@id/btn_delete_subject" />
-
-        <!-- 삭제 버튼 -->
-        <Button
+        <!-- 삭제 버튼 (X 아이콘) -->
+        <ImageButton
             android:id="@+id/btn_delete_subject"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="삭제"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            android:backgroundTint="#CC3333"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#CC3333"
+            android:contentDescription="삭제"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
 <!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
 <!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginBottom="12dp"-->
+<!--    app:cardBackgroundColor="#1E1E1E"-->
+<!--    app:cardCornerRadius="12dp"-->
+<!--    app:cardElevation="4dp">-->
 
-<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="16dp">-->
+
+<!--        &lt;!&ndash; 과목 색상 인디케이터 &ndash;&gt;-->
+<!--        <View-->
+<!--            android:id="@+id/view_subject_color"-->
+<!--            android:layout_width="6dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:background="#8B5CF6"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--        &lt;!&ndash; 과목 이름 &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_subject_name"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="모바일 프로그래밍"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginStart="12dp"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintStart_toEndOf="@id/view_subject_color"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/btn_delete_subject" />-->
+
+<!--        &lt;!&ndash; 오늘의 공부 시간 &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_today_time"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="오늘: 0분"-->
+<!--            android:textColor="#AAAAAA"-->
+<!--            android:textSize="14sp"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:layout_marginStart="12dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tv_subject_name"-->
+<!--            app:layout_constraintStart_toEndOf="@id/view_subject_color"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/btn_delete_subject" />-->
+
+<!--        &lt;!&ndash; 타이머 시작 버튼 &ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_start_timer"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="타이머 시작"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:textSize="14sp"-->
+<!--            android:backgroundTint="#8B5CF6"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginStart="12dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tv_today_time"-->
+<!--            app:layout_constraintStart_toEndOf="@id/view_subject_color"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/btn_delete_subject" />-->
+
+<!--        &lt;!&ndash; 삭제 버튼 &ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_delete_subject"-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="삭제"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:textSize="12sp"-->
+<!--            android:backgroundTint="#CC3333"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--</androidx.cardview.widget.CardView>-->
+<!--&lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+<!--&lt;!&ndash;<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="match_parent">&ndash;&gt;-->
+
+<!--&lt;!&ndash;</androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
