@@ -18,6 +18,32 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp" />
 
+    <!-- 공유 섹션 -->
+    <TextView
+        android:id="@+id/tvShareSection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공유하기"
+        android:textColor="#8B5CF6"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvSettingsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:id="@+id/btnShareKakao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="📱 카카오톡으로 공유하기"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FEE500"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tvShareSection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
     <!-- 회원정보 섹션 -->
     <TextView
         android:id="@+id/tvAccountSection"
@@ -27,7 +53,7 @@
         android:textColor="#8B5CF6"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tvSettingsTitle"
+        app:layout_constraintTop_toBottomOf="@id/btnShareKakao"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="32dp" />
 
@@ -56,3 +82,61 @@
         android:layout_marginTop="12dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#121212"-->
+<!--    android:padding="24dp">-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvSettingsTitle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="설정"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginTop="16dp" />-->
+
+<!--    &lt;!&ndash; 회원정보 섹션 &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/tvAccountSection"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="계정 관리"-->
+<!--        android:textColor="#8B5CF6"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvSettingsTitle"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginTop="32dp" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnLogout"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="로그아웃"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:backgroundTint="#666666"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvAccountSection"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginTop="12dp" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnDeleteAccount"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="회원탈퇴"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:backgroundTint="#CC3333"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btnLogout"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_marginTop="12dp" />-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

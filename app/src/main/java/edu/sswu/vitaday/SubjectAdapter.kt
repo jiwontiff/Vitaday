@@ -85,9 +85,14 @@ class SubjectAdapter(
                     // 싱글 클릭 (300ms 후 실행)
                     lastClickTime = clickTime
                     itemView.postDelayed({
-                        if (System.currentTimeMillis() - lastClickTime >= DOUBLE_CLICK_TIME_DELTA) {
-                            onSubjectClick(subject)
+                        // ⭐ [수정 핵심] lastClickTime이 0이 아니어야 함 (더블클릭으로 리셋되지 않았을 때만 실행)
+                        if (lastClickTime != 0L && System.currentTimeMillis() - lastClickTime >= DOUBLE_CLICK_TIME_DELTA) {
+                            onSubjectClick(subject) // 타이머 열기
+                            lastClickTime = 0L // 실행 후 초기화
                         }
+//                        if (System.currentTimeMillis() - lastClickTime >= DOUBLE_CLICK_TIME_DELTA) {
+//                            onSubjectClick(subject)
+//                        }
                     }, DOUBLE_CLICK_TIME_DELTA)
                 }
             }
