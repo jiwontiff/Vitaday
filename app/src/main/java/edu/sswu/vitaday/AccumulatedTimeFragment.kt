@@ -42,6 +42,13 @@ class AccumulatedTimeFragment : Fragment() {
         observeData()
     }
 
+    // ⭐ 이 함수를 추가!
+    override fun onResume() {
+        super.onResume()
+        // 화면에 돌아올 때마다 통계 새로고침
+        viewModel.loadAllStatistics()
+    }
+
     private fun initViews(view: View) {
         tvToday = view.findViewById(R.id.tvToday)
         tvThisWeek = view.findViewById(R.id.tvThisWeek)

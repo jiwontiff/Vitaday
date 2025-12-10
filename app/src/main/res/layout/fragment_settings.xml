@@ -36,7 +36,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="📱 카카오톡으로 공유하기"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:backgroundTint="#FEE500"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/tvShareSection"

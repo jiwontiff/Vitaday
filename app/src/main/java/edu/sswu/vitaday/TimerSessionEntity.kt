@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "TimerSession",
+/*
     foreignKeys = [
         ForeignKey(
             entity = Subject::class,
@@ -15,6 +16,7 @@ import androidx.room.PrimaryKey
             onDelete = ForeignKey.CASCADE
         )
     ],
+ */
     indices = [Index(value = ["subjectId"]), Index(value = ["date"])]
 )
 data class TimerSessionEntity(

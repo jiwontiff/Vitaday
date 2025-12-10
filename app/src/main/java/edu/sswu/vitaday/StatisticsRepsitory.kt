@@ -15,6 +15,16 @@ class StatisticsRepository(
 
     suspend fun getTodayTotalDuration(): Long {
         val (startOfDay, endOfDay) = getTodayRange()
+        // ⭐ 로그 추가
+        android.util.Log.d("StatisticsRepo", "=== getTodayTotalDuration ===")
+        android.util.Log.d("StatisticsRepo", "startOfDay: $startOfDay (${Date(startOfDay)})")
+        android.util.Log.d("StatisticsRepo", "endOfDay: $endOfDay (${Date(endOfDay)})")
+
+        val duration = timerSessionDao.getTotalDurationForPeriod(startOfDay, endOfDay)
+
+        // ⭐ 로그 추가
+        android.util.Log.d("StatisticsRepo", "조회된 duration: $duration")
+
         return timerSessionDao.getTotalDurationForPeriod(startOfDay, endOfDay)
     }
 
@@ -83,14 +93,23 @@ class StatisticsRepository(
     private fun getThisWeekRange(): Pair<Long, Long> {
         val calendar = Calendar.getInstance()
 
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        // 이번 주 월요일로 이동
+        val currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        val daysFromMonday = when (currentDayOfWeek) {
+            Calendar.SUNDAY -> 6  // 일요일이면 6일 전이 월요일
+            else -> currentDayOfWeek - Calendar.MONDAY  // 나머지는 계산
+        }
+        calendar.add(Calendar.DAY_OF_MONTH, -daysFromMonday)
+
+        // 월요일 00:00:00
         calendar.set(Calendar.HOUR_OF_DAY, 0)
         calendar.set(Calendar.MINUTE, 0)
         calendar.set(Calendar.SECOND, 0)
         calendar.set(Calendar.MILLISECOND, 0)
         val startOfWeek = calendar.timeInMillis
 
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
+        // 일요일 23:59:59 (6일 후)
+        calendar.add(Calendar.DAY_OF_MONTH, 6)
         calendar.set(Calendar.HOUR_OF_DAY, 23)
         calendar.set(Calendar.MINUTE, 59)
         calendar.set(Calendar.SECOND, 59)

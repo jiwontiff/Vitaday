@@ -1,0 +1,87 @@
+{
+  "project_info": {
+    "project_number": "323127929165",
+    "project_id": "login-2cb06",
+    "storage_bucket": "login-2cb06.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323127929165:android:184dde22de9e034ffd2f04",
+        "android_client_info": {
+          "package_name": "edu.sswu.vitaday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323127929165-b67a3uqaekcme6pcudrt5stq6eldl950.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.sswu.vitaday",
+            "certificate_hash": "609b42988766a23be2385d30cb57600d9f913165"
+          }
+        },
+        {
+          "client_id": "323127929165-bk0a443jsamtpnbtrqs6f6bnjccgf3gc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.sswu.vitaday",
+            "certificate_hash": "7b71e8079a5d55891b2e28b2e0bd7e049090f7cb"
+          }
+        },
+        {
+          "client_id": "323127929165-gmhtona8ldc2o3ivk8opmk503tm1fihi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.sswu.vitaday",
+            "certificate_hash": "fdc17e3e2fd712f617240d98820afd5c747e9822"
+          }
+        },
+        {
+          "client_id": "323127929165-hhb7p3ofhgosoeg5k5o0qmceuhhositu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.sswu.vitaday",
+            "certificate_hash": "0a8fc569582cebfb7801983c05f33e4f5ae80a23"
+          }
+        },
+        {
+          "client_id": "323127929165-jkeko1uh686hdha54bm8e3gt326hgfhf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.sswu.vitaday",
+            "certificate_hash": "1eb44d16c3853f451444520019104378356c7cd8"
+          }
+        },
+        {
+          "client_id": "323127929165-l1uiu3n8f1291eipbf4cum18795ed5tg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.sswu.vitaday",
+            "certificate_hash": "bd86463a48c8ba95517bfe1822e62c08e9b4d01e"
+          }
+        },
+        {
+          "client_id": "323127929165-0aiifs1is9ak82oj5v51q0deaga01fv6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOZ-S5t5yg2MkGWOwm7ouV2ay5OFnIZnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323127929165-0aiifs1is9ak82oj5v51q0deaga01fv6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
