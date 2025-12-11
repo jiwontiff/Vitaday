@@ -9,6 +9,17 @@ android {
     namespace = "edu.sswu.vitaday"
     compileSdk = 36
 
+    // ===== 키스토어 설정 =====
+    signingConfigs {
+        create("release") {
+            storeFile = file(project.property("MYAPP_STORE_FILE") as String)
+            storePassword = project.property("MYAPP_STORE_PASSWORD") as String
+            keyAlias = project.property("MYAPP_KEY_ALIAS") as String
+            keyPassword = project.property("MYAPP_KEY_PASSWORD") as String
+        }
+    }
+    // ===== 여기까지 =====
+
     defaultConfig {
         applicationId = "edu.sswu.vitaday"
         minSdk = 24
@@ -20,7 +31,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("release")
+        }
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
